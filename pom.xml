@@ -18,6 +18,10 @@
             <name>Hans Schuell</name>
             <email>hans.schuell(at)giraone.com</email>
         </developer>
+        <developer>
+            <name>Mohsen Motamed</name>
+            <email>motamed.mo@gmail.com</email>
+        </developer>
     </developers>
 
     <scm>
@@ -35,12 +39,12 @@
         <!-- project dependency versions -->
         <slf4j.version>1.7.21</slf4j.version>
         <junit.version>4.12</junit.version>
-        <logback.version>1.1.7</logback.version>
+        <logback.version>1.2.13</logback.version>
         <args4j.version>2.33</args4j.version>
         <commons-lang3.version>3.4</commons-lang3.version>
         <commons-math3.version>3.6</commons-math3.version>
-        <commons-io.version>2.5</commons-io.version>
-        <aws-java-sdk.version>1.11.642</aws-java-sdk.version>
+        <commons-io.version>2.7</commons-io.version>
+        <aws-java-sdk.version>1.12.261</aws-java-sdk.version>
         <jaxb-core.version>2.3.0.1</jaxb-core.version>
         <!-- plugin versions -->
         <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
@@ -98,6 +102,11 @@
             <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+	    <groupId>javax.xml.bind</groupId>
+	    <artifactId>jaxb-api</artifactId>
+	    <version>2.3.1</version>
+	    </dependency>
     </dependencies>
 
     <build>

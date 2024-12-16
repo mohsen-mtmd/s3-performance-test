@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import de.jeha.s3pt.OperationResult;
 import de.jeha.s3pt.operations.util.RandomDataGenerator;
+import de.jeha.s3pt.operations.util.RandomInputStream;
 import org.apache.commons.lang3.time.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,6 @@ public class Upload extends AbstractOperation {
         LOG.info("Upload: n={}, size={} byte", n, size);
 
         for (int i = 0; i < n; i++) {
-            final byte[] data = RandomDataGenerator.generate(size);
             final String key;
             if (prefix != null) {
                 key = prefix + "/" + UUID.randomUUID().toString();
@@ -47,10 +47,10 @@ public class Upload extends AbstractOperation {
             }
 
             final ObjectMetadata objectMetadata = new ObjectMetadata();
-            objectMetadata.setContentLength(data.length);
+            objectMetadata.setContentLength(size);
 
             final PutObjectRequest putObjectRequest =
-                    new PutObjectRequest(bucket, key, new ByteArrayInputStream(data), objectMetadata);
+                    new PutObjectRequest(bucket, key, new RandomInputStream(size), objectMetadata);
 
             final StopWatch stopWatch = new StopWatch();
             stopWatch.start();
